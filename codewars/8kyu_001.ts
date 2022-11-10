@@ -1,3 +1,5 @@
+// Parse nice int from char problem
+
 import { strict as assert } from 'assert';
 
 function get_age (age: string): number {

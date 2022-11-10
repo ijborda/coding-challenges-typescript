@@ -1,3 +1,5 @@
+// Safen User Input Part I - htmlspecialchars
+
 import { strict as assert } from 'assert';
 
 function htmlspecialchars (formData: string): string {
