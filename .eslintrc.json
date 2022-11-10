@@ -1,0 +1,46 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": [
+    "standard",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "semi": "off",
+    "@typescript-eslint/semi": [
+      2,
+      "always"
+    ],
+    "@typescript-eslint/camelcase": [
+      {
+        "properties": "never"
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": 0
+  },
+  "overrides": [
+    {
+      "files": [
+        "test/*.spec.ts"
+      ],
+      "rules": {
+        "no-unused-expressions": 0
+      }
+    }
+  ]
+}
