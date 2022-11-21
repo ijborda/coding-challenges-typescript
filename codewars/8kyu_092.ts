@@ -5,6 +5,7 @@ import { assert } from 'chai';
 export function firstNonConsecutive (arr: number[]) : null | number {
   const num = arr.find((current, i, array) => current - array[i - 1] > 1);
   return num || num === 0 ? num : null;
+  // return arr.find((current, i, array) => current - array[i - 1] > 1) ?? null;
 }
 
 describe('a positive example', function () {
