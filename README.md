@@ -23,5 +23,5 @@ npm run test {file.ts}
 Example:
 
 ```
-npm run test codewars/7kyu_00
+npm run test codewars/8kyu_001.ts
 ```
