@@ -2,19 +2,23 @@
 
 A repository filled with my coding challenges using typescript.
 
-Run a file with the following command.
+Clone this repository:
 
 ```
-node_modules/.bin/ts-node {file.ts}
+git clone https://github.com/ijborda/coding-challenges-typescript.git
 ```
 
-Example:
+Install the dependencies:
 
 ```
-node_modules/.bin/ts-node codewars/7kyu_001.ts
+npm install
 ```
 
-Or use npm script `npm run test {file.ts}`
+Test a file with the following command (Each file is one kata/problem):
+
+```
+npm run test {file.ts}
+```
 
 Example:
 
