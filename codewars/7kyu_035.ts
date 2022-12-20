@@ -18,9 +18,9 @@ export function checkExam (array1: string[], array2: string[]): number {
 
 describe('Basic tests', () => {
   it('Should pass basic tests', () => {
-    // assert.equal(checkExam(['a', 'a', 'b', 'b'], ['a', 'c', 'b', 'd']), 6);
+    assert.equal(checkExam(['a', 'a', 'b', 'b'], ['a', 'c', 'b', 'd']), 6);
     assert.equal(checkExam(['a', 'a', 'c', 'b'], ['a', 'a', 'b', '']), 7);
-    // assert.equal(checkExam(['a', 'a', 'b', 'c'], ['a', 'a', 'b', 'c']), 16);
-    // assert.equal(checkExam(['b', 'c', 'b', 'a'], ['', 'a', 'a', 'c']), 0);
+    assert.equal(checkExam(['a', 'a', 'b', 'c'], ['a', 'a', 'b', 'c']), 16);
+    assert.equal(checkExam(['b', 'c', 'b', 'a'], ['', 'a', 'a', 'c']), 0);
   });
 });
