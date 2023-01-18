@@ -25,3 +25,6 @@ Example:
 ```
 npm run test codewars/8kyu_001.ts
 ```
+
+## Requirement
+- Node 14
