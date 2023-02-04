@@ -1,21 +1,17 @@
-// Sum of Triangular Numbers
+// Is integer safe to use?
 
-import { strict as assert } from 'assert';
+import { expect } from 'chai';
 
-function sumTriangularNumbers (n:number):any {
-  if (n < 0) {
-    return 0;
-  }
-  return Array.from(new Array(n), (_, i) => i + 1).reduce((acc, a, i) => acc + (a * (n - i)), 0);
+export function SafeInteger (n: number): boolean {
+  return Number.isSafeInteger(n);
 }
 
-// Test
-describe('solution', function () {
-  it('BasicTests', function () {
-    assert.equal(sumTriangularNumbers(6), 56);
-    assert.equal(sumTriangularNumbers(34), 7140);
-    assert.equal(sumTriangularNumbers(-291), 0);
-    assert.equal(sumTriangularNumbers(943), 140205240);
-    assert.equal(sumTriangularNumbers(-971), 0);
+describe('SafeInteger', function () {
+  it('should return false for 9007199254740992', () => {
+    expect(SafeInteger(9007199254740992)).to.equal(false);
+  });
+
+  it('should return true for 9007199254740990', () => {
+    expect(SafeInteger(9007199254740990)).to.equal(true);
   });
 });

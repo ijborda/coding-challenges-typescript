@@ -1,28 +1,27 @@
-// Automorphic Number (Special Numbers Series #6)
+// Printing Array elements with Comma delimiters
 
-import { strict as assert } from 'assert';
+import { assert } from 'chai';
 
-function automorphic (n: number): string {
-  enum Response {
-    AUTOMORPHIC = 'Automorphic',
-    NOTAUTOMORPHI = 'Not!!'
-  }
-
-  const isautomorphic = (n ** 2).toString().endsWith(n.toString());
-
-  return isautomorphic ? Response.AUTOMORPHIC : Response.NOTAUTOMORPHI;
+export function printArray (array: any[]) : string {
+  return array.join(',');
 }
 
-// Test
-describe('Basic tests', () => {
-  it('Testing for 1', () => assert.strictEqual(automorphic(1), 'Automorphic'));
-  it('Testing for 3', () => assert.strictEqual(automorphic(3), 'Not!!'));
-  it('Testing for 6', () => assert.strictEqual(automorphic(6), 'Automorphic'));
-  it('Testing for 9', () => assert.strictEqual(automorphic(9), 'Not!!'));
-  it('Testing for 25', () => assert.strictEqual(automorphic(25), 'Automorphic'));
-  it('Testing for 53', () => assert.strictEqual(automorphic(53), 'Not!!'));
-  it('Testing for 76', () => assert.strictEqual(automorphic(76), 'Automorphic'));
-  it('Testing for 95', () => assert.strictEqual(automorphic(95), 'Not!!'));
-  it('Testing for 625', () => assert.strictEqual(automorphic(625), 'Automorphic'));
-  it('Testing for 225', () => assert.strictEqual(automorphic(225), 'Not!!'));
+describe('printArray([2,4,5,2])', function () {
+  // anything exported from the solution has automatically been imported for you already as "solution"
+
+  it("Should return something that isn't falsy", function () {
+    assert.equal(!!printArray([2, 4, 5, 2]), true, 'Expected function to return a value');
+  });
+
+  it("Should return '2,4,5,2'", function () {
+    assert.deepEqual(printArray([2, 4, 5, 2]), '2,4,5,2');
+  });
+
+  it("Should return '2,4,5,2'", function () {
+    assert.deepEqual(printArray(['2', '4', '5', '2']), '2,4,5,2');
+  });
+
+  it("Should return '2,4,5,2'", function () {
+    assert.deepEqual(printArray([2, '4', 5, '2']), '2,4,5,2');
+  });
 });
