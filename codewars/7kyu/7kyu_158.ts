@@ -3,6 +3,7 @@
 import { assert } from 'chai';
 
 export function generate (length: number): string {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return Array.from({ length }).map(_ => +(Math.random() > 0.5)).join('');
 }
 
