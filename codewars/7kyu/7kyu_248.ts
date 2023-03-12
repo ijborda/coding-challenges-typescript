@@ -3,33 +3,23 @@
 import { assert } from 'chai';
 
 export function rotations (dieArray: number[]): number {
-  const dieOpposite = {
-    1: 6,
-    2: 5,
-    3: 4,
-    4: 3,
-    5: 2,
-    6: 1
-  };
-  const target = dieArray.filter(a => !dieArray.includes(dieOpposite[a as keyof typeof dieOpposite]));
-  const targetSelect = target.length === 0 || target.length === dieArray.length ? mode(dieArray) : target[0];
-  const dieArrayAdj: number[] = dieArray.map(a => {
-    if (dieOpposite[a as keyof typeof dieOpposite] === targetSelect) {
-      return 2;
-    } else if (a === targetSelect) {
-      return 0;
-    } else {
-      return 1;
-    }
-  });
-  console.log(target, targetSelect, dieArray, dieArrayAdj);
-  return dieArrayAdj.reduce((acc, a) => acc + a, 0);
-}
+  let minRotations = Number.MAX_VALUE;
 
-const mode = (arr: number[]) => {
-  return arr.sort((a, b) => arr.filter(v => v === a).length - arr.filter(v => v === b).length
-  ).pop();
-};
+  for (let target = 1; target <= 6; target++) {
+    const rotations: number[] = dieArray.map(die => {
+      const opposite = Math.abs(7 - die);
+      switch (target) {
+        case opposite: return 2;
+        case die: return 0;
+        default: return 1;
+      }
+    });
+    const totalRotations = rotations.reduce((acc, a) => acc + a, 0);
+    minRotations = Math.min(totalRotations, minRotations);
+  }
+
+  return minRotations;
+}
 
 // Test:
 const act = (expected: number, dieArray: number[]): void => {
@@ -41,10 +31,13 @@ const act = (expected: number, dieArray: number[]): void => {
 
 describe('Solution', function () {
   describe('Fixed Tests', function () {
-    // act(2, [1, 1, 6]);
-    // act(2, [1, 2, 3]);
-    // act(0, [3, 3, 3]);
-    // act(3, [1, 6, 2, 3]);
+    act(2, [1, 1, 6]);
+    act(2, [1, 2, 3]);
+    act(0, [3, 3, 3]);
+    act(3, [1, 6, 2, 3]);
     act(3, [5, 4, 6, 6, 4]);
+    act(3, [6, 2, 4, 4, 5]);
+    act(4, [6, 6, 6, 5, 1, 3]);
+    act(3, [5, 5, 4, 4, 3]);
   });
 });
