@@ -5,7 +5,8 @@
   "main": "out/index.js",
   "scripts": {
     "test": "node_modules/.bin/_mocha --exit -t 15000 -r ts-node/register",
-    "lint": "node_modules/.bin/eslint . --ext .ts"
+    "lint": "node_modules/.bin/eslint . --ext .ts",
+    "build": "node_modules/.bin/tsc -p ./tsconfig.json"
   },
   "author": "",
   "license": "ISC",

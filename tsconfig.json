@@ -1,7 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es2017",
+    "outDir": "dist",
+    "rootDir": "codewars",
     "module": "commonjs",
-    "strict": true
+    "sourceMap": true,
+    "lib": ["esnext", "dom"],
+    "strict": true,
+    "esModuleInterop": true
   }
 }
