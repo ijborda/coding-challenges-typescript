@@ -1,4 +1,4 @@
-// Human Readable Time
+// RGB To Hex Conversion
 
 import { assert } from 'chai';
 
