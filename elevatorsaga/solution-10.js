@@ -71,7 +71,7 @@ const fn = {
         }
         if (elevator.loadFactor() > 0.7) { // Time to prioritize unloading
           let targets = getNearestFloors(floorNum, elevator.getPressedFloors(), 3);
-          if (elevator.destinationDirection === 'up') {
+          if (floorNum - targets[0] > 0) {
             targets = sort(targets, 'asc');
           } else {
             targets = sort(targets, 'desc');
