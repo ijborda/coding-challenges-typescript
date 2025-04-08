@@ -69,6 +69,14 @@ const fn = {
           ignore_num_stopped_at_floor_event[i] -= 1;
           return;
         }
+        if (elevator.destinationQueue.length > 0) {
+          const nextFloorNumber = elevator.destinationQueue[0];
+          if (isFloorEmpty(nextFloorNumber) && !isThereToUnload(nextFloorNumber, elevator)) {
+            elevator.destinationQueue = elevator.destinationQueue.filter(floorNumber => floorNumber !== nextFloorNumber);
+            elevator.checkDestinationQueue();
+            return;
+          }
+        }
         if (isElevatorFull(elevator)) { // Time to prioritize unloading
           let targets = getNearestFloors(floorNum, elevator.getPressedFloors(), 3);
           if (floorNum - targets[0] > 0) {
@@ -78,14 +86,6 @@ const fn = {
           }
           targets.forEach(target => elevator.goToFloor(target, true));
           ignore_num_stopped_at_floor_event[i] = 3;
-          return;
-        }
-        if (elevator.destinationQueue.length > 0) {
-          const nextFloorNumber = elevator.destinationQueue[0];
-          if (isFloorEmpty(nextFloorNumber) && !isThereToUnload(nextFloorNumber, elevator)) {
-            elevator.destinationQueue = elevator.destinationQueue.filter(floorNumber => floorNumber !== nextFloorNumber);
-            elevator.checkDestinationQueue();
-          }
           return;
         }
       });
