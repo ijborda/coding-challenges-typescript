@@ -69,7 +69,7 @@ const fn = {
           ignore_num_stopped_at_floor_event[i] -= 1;
           return;
         }
-        if (elevator.loadFactor() > 0.7) { // Time to prioritize unloading
+        if (isElevatorFull(elevator)) { // Time to prioritize unloading
           let targets = getNearestFloors(floorNum, elevator.getPressedFloors(), 3);
           if (floorNum - targets[0] > 0) {
             targets = sort(targets, 'asc');
