@@ -83,7 +83,7 @@ const fn = {
         if (elevator.destinationQueue.length > 0) {
           const nextFloorNumber = elevator.destinationQueue[0];
           if (isFloorEmpty(nextFloorNumber) && !isThereToUnload(nextFloorNumber, elevator)) {
-            elevator.destinationQueue = elevator.destinationQueue.slice(1);
+            elevator.destinationQueue = elevator.destinationQueue.filter(floorNumber => floorNumber !== nextFloorNumber);
             elevator.checkDestinationQueue();
           }
           return;
