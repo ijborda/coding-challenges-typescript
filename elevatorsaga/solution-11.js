@@ -37,7 +37,7 @@ const fn = {
     };
 
     const isElevatorFull = (elevator) => {
-      return elevator.loadFactor() > 0.4;
+      return elevator.loadFactor() > 0.5;
     };
 
     const isFloorEmpty = (floorNum) => {
@@ -79,10 +79,10 @@ const fn = {
         if (isElevatorFull(elevator)) { // Time to prioritize unloading
           const unloadFloorsNum = elevator.getPressedFloors().length;
           let targets = getNearestFloors(floorNum, elevator.getPressedFloors(), unloadFloorsNum);
-          if (floorNum - targets[0] > 0) {
-            targets = sort(targets, 'asc');
-          } else {
+          if (!targets.find(target => target > floorNum)) { // All below
             targets = sort(targets, 'desc');
+          } else {
+            targets = sort(targets, 'asc');
           }
           targets.forEach(target => elevator.goToFloor(target, true));
           ignore_num_stopped_at_floor_event[i] = unloadFloorsNum;
