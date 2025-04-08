@@ -74,19 +74,18 @@ const fn = {
           if (isFloorEmpty(nextFloorNumber) && !isThereToUnload(nextFloorNumber, elevator)) {
             elevator.destinationQueue = elevator.destinationQueue.filter(floorNumber => floorNumber !== nextFloorNumber);
             elevator.checkDestinationQueue();
-            return;
           }
         }
         if (isElevatorFull(elevator)) { // Time to prioritize unloading
-          let targets = getNearestFloors(floorNum, elevator.getPressedFloors(), 3);
+          const unloadFloorsNum = elevator.getPressedFloors().length;
+          let targets = getNearestFloors(floorNum, elevator.getPressedFloors(), unloadFloorsNum);
           if (floorNum - targets[0] > 0) {
             targets = sort(targets, 'asc');
           } else {
             targets = sort(targets, 'desc');
           }
           targets.forEach(target => elevator.goToFloor(target, true));
-          ignore_num_stopped_at_floor_event[i] = 3;
-          return;
+          ignore_num_stopped_at_floor_event[i] = unloadFloorsNum;
         }
       });
 
